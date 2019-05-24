@@ -10,8 +10,8 @@ def get_first_superuser():
 
 class ServiceModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    name = models.CharField(max_length=64, verbose_name="Service Name")
-    port = models.CharField(max_length=32, validators=[validate_comma_separated_integer_list])
+    name = models.CharField(max_length=64, verbose_name="Service Name", blank=False)
+    port = models.CharField(max_length=32, validators=[validate_comma_separated_integer_list], blank=False)
     description = models.TextField(verbose_name='Description', blank=True)
     dateCreated = models.DateTimeField(auto_now_add=True)
     dateUpdate = models.DateTimeField(auto_now=True)
@@ -22,8 +22,8 @@ class ServiceModel(models.Model):
         unique_together = ('name', 'port')
 
     def __str__(self):
-        return self.name
+        return self.name + " - " + self.port
 
     def __unicode__(self):
-        return self.name
+        return self.name + " - " + self.port
 

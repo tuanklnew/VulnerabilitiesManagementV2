@@ -11,6 +11,13 @@ class ServiceDetailSerializer(serializers.ModelSerializer):
         # exclude = ('createBy', 'updateBy')
         fields = '__all__'
 
+        extra_kwargs = {
+            'createBy': {'read_only': True},
+            'updateBy': {'read_only': True},
+            'dateCreated': {'read_only': True},
+            'dateUpdate': {'read_only': True},
+        }
+
 
 class ServiceListSerializer(serializers.ModelSerializer):
     class Meta:

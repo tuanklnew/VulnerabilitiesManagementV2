@@ -1,5 +1,5 @@
 from django.urls import path
-from services import apis
+from services.api import apis
 
 app_name='services'
 

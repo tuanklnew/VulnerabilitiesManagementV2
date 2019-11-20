@@ -4,6 +4,6 @@ from hosts.models import *
 
 admin.site.register(HostModel)
 admin.site.register(HostGroupModel)
-admin.site.register(HostIPAddrModel)
+admin.site.register(NetworkCard)
 admin.site.register(OSModel)
 # admin.site.register(HostOSHistory)

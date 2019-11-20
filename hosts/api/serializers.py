@@ -1,27 +1,27 @@
 from rest_framework import serializers
-from hosts.models import HostModel, HostIPAddrModel, OSModel
+from hosts.models import HostModel, NetworkCard, OSModel
 
 
 ##########################################
-#   HostIPAddrModel Serializers
+#   NetworkCard Serializers
 #
 
 # Use for Nest Serializer of Host Objects
-class HostIPSerializer(serializers.ModelSerializer):
+class NetworkCardSerializer(serializers.ModelSerializer):
     updateBy = serializers.CharField(source='updateBy.username')
 
     class Meta:
-        model = HostIPAddrModel
+        model = NetworkCard
         exclude = ('host',)
         # fields = '__all__'
 
 
 # Use for data input to create Host IP objects
-class HostIPInputSerializer(serializers.ModelSerializer):
+class NetworkCardInputSerializer(serializers.ModelSerializer):
     host = serializers.StringRelatedField(many=False)
 
     class Meta:
-        model = HostIPAddrModel
+        model = NetworkCard
         exclude = ('updateDate', 'updateBy')
         # fields = '__all__'
 
@@ -55,7 +55,7 @@ class OSInputSerializer(serializers.ModelSerializer):
 class HostDetailSerializer(serializers.ModelSerializer):
     createBy = serializers.CharField(source='createBy.username')
     updateBy = serializers.CharField(source='updateBy.username')
-    ipAddr = HostIPSerializer(many=True, read_only=True)
+    ipAddr = NetworkCardSerializer(many=True, read_only=True)
     os = serializers.StringRelatedField(many=False)
 
     class Meta:

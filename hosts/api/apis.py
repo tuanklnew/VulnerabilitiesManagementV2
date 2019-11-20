@@ -1,14 +1,8 @@
 from hosts.models import HostModel
-from rest_framework.views import APIView
-from rest_framework.generics import CreateAPIView, RetrieveAPIView, RetrieveDestroyAPIView, RetrieveUpdateAPIView, ListAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView
 from rest_framework import filters
-from django.db.models import Q
 
-from rest_framework.response import Response
-from hosts.serializers import HostDetailSerializer, HostInputDataSerializer, HostListSerializer
-from services.forms import ServiceAddForm
-from django.contrib.auth.models import User
-import uuid
+from hosts.api.serializers import HostDetailSerializer, HostInputDataSerializer, HostListSerializer
 
 
 class APIGetHostDetail(RetrieveAPIView):
@@ -47,8 +41,8 @@ class APIListHosts(ListAPIView):
             query = query.filter(port=port)
 
         return query
-#
-#
+
+
 class APICreateHost(CreateAPIView):
     serializer_class = HostInputDataSerializer
 

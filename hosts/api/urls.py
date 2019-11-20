@@ -1,5 +1,5 @@
 from django.urls import path
-from hosts import apis
+from hosts.api import apis
 
 app_name='hosts'
 

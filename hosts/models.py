@@ -88,6 +88,12 @@ class NetworkCard(models.Model):
     # Inferface name
     ifName = models.CharField(max_length=16, verbose_name="Interface Name")
 
+    # Status of interface
+    isUp = models.BooleanField(default=False, verbose_name="Status of Interface")
+
+    # Is in use
+    isInUse = models.BooleanField(default=False, verbose_name="Interface in using")
+
     # Datetime fields
     createDate = models.DateTimeField(auto_now_add=True, verbose_name="Date Updated")
     updateDate = models.DateTimeField(auto_now=True, verbose_name="Date Updated")
